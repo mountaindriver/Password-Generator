@@ -14,46 +14,50 @@ function writePassword() {
   passwordCharacters = [];
 
   // Prompts appear after  button is pressed
-  let characterAmount = prompt("Length of your password 8-128?", "8-128");
+  let characterAmount = prompt("Length of your password 8-128?", 8);
   
   // IF STATEMENTS that will then add more things to the array
   if (characterAmount < 8 || characterAmount > 128){
-    alert("nah that ain't right")
-    return writePassword()
-    // How do i turn 8 into a range between 8-128?
+    alert("Please enter valid number 8-128");
+    return writePassword();
   } 
   
-  let LowerCase = confirm("Would you like LOWERCASE letters?");
-  let UpperCase = prompt("Would you like UPPERCASE letters?", "yes");
-  let num = prompt("Would you like NUMBERS?", "yes");
-  let symbols = prompt("Would you like SYMBOLS?", "yes");
+  let lowerCase = confirm("Would you like LOWERCASE letters?");
+  let upperCase = confirm("Would you like UPPERCASE letters?");
+  let num = confirm("Would you like NUMBERS?");
+  let symbols = confirm("Would you like SYMBOLS?");
 
-  if (LowerCase) {
+  if (lowerCase) {
     passwordCharacters = passwordCharacters.concat(lowerCaseLetters);
-    console.log("Lowercase letters");
+    console.log("include lowercase letters");
   } else {
     console.log("no lower case letters");
   }
 
-  if (UpperCase == "yes") {
+  if (upperCase) {
     passwordCharacters = passwordCharacters.concat(upperCaseLetters);
-    console.log("Uppercase letters");
+    console.log("include uppercase letters");
   } else {
     console.log("no Uppercase letters");
   }
 
-  if (num == "yes") {
+  if (num) {
     passwordCharacters = passwordCharacters.concat(number);
-    console.log("Numbers");
+    console.log("include numbers");
   } else {
-    console.log("no numbers")
+    console.log("no numbers");
   }
 
-  if (symbols == "yes") {
+  if (symbols) {
     passwordCharacters = passwordCharacters.concat(symbolsArr);
-    console.log("Symbols")
+    console.log("include symbols");
   } else {
-    console.log("no symbols")
+    console.log("no symbols");
+  }
+
+  if (lowerCase == false && upperCase == false && num == false && symbols == false){
+    alert("Please select at least one form of character");
+    return writePassword();
   }
 
   var password = generatePassword(characterAmount)
@@ -61,8 +65,7 @@ function writePassword() {
   passwordText.value = password
 };
 
-// var sampleArr = ["milk", "eggs", "cereal"]
-// sampleArr[2] //cereal
+
 function generatePassword(characterAmount){
   var randomPass = "";
   for(i=0; i<characterAmount; i++){
@@ -78,6 +81,3 @@ function generatePassword(characterAmount){
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
-
-console.log(passwordCharacters);
