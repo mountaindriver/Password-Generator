@@ -1,12 +1,13 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
+
+// list of arrays
 const number = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 const symbolsArr = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "+", ",", "/", ":", ";", "<", ">", "?", "[", "]",];
 const lowerCaseLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 let upperCaseLetters = lowerCaseLetters.map(letter => letter.toUpperCase());
 var passwordCharacters = [];
 
-// 
 
 // Write password to the #password input
 function writePassword() {
@@ -14,7 +15,7 @@ function writePassword() {
   passwordCharacters = [];
 
   // Prompts appear after  button is pressed
-  let characterAmount = prompt("Length of your password 8-128?", 8);
+  let characterAmount = prompt("How long do you want your password? (8-128 Only)", 8);
   
   // IF STATEMENTS that will then add more things to the array
   if (characterAmount < 8 || characterAmount > 128){
